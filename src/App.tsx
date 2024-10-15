@@ -1,12 +1,15 @@
 import React from 'react'
 
-import { GlobalStyle } from './styles'
+import { GlobalStyle, Container } from './styles'
+import Header from './Components/Header'
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div>Ola mundo</div>
+      <Container>
+        <Header />
+      </Container>
     </>
   )
 }
