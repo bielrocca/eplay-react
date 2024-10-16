@@ -1,7 +1,19 @@
 import styled from 'styled-components'
 
-export const Container = styled.section`
+import { Props } from '.'
+import { cores } from '../../styles'
+import { TagContainer } from '../Tag/styles'
+import { Card } from '../Produto/styles'
+
+export const Container = styled.section<Omit<Props, 'title'>>`
   padding: 32px 0;
+  background-color: ${(props) =>
+    props.background === 'black' ? cores.preto : cores.cinza};
+
+  ${Card} {
+    background-color: ${(props) =>
+      props.background === 'black' ? cores.cinza : cores.preto};
+  }
 `
 
 export const Lista = styled.ul`
