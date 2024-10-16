@@ -1,15 +1,17 @@
 import React from 'react'
 
-import { GlobalStyle, Container } from './styles'
+import { GlobalStyle } from './styles'
 import Header from './Components/Header'
+import Banner from './Components/Banner'
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
+      <div className="container">
         <Header />
-      </Container>
+      </div>
+      <Banner />
     </>
   )
 }
