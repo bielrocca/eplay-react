@@ -4,6 +4,7 @@ import { GlobalStyle } from './styles'
 import Header from './Components/Header'
 
 import Rotas from './routes'
+import Rodape from './Components/Rodape'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Header />
       </div>
       <Rotas />
+      <Rodape />
     </BrowserRouter>
   )
 }
