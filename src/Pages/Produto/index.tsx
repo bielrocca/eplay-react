@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import Hero from '../../Components/Hero'
 import Secao from '../../Components/Secao'
 
-import zelda from '../../Assets/Images/zelda.png'
 import Galeria from '../../Components/Galeria'
 
 const Produto = () => {
