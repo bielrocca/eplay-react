@@ -9,8 +9,9 @@ import bgHollow from '../../Assets/Images/banner-hollow.jpg'
 import play from '../../Assets/Images/play.png'
 import zoom from '../../Assets/Images/zoom.png'
 import fechar from '../../Assets/Images/fechar.png'
+import { useState } from 'react'
 
-type GaleriaItem = {
+interface GaleriaItem {
   type: 'imagem' | 'video'
   url: string
 }
@@ -35,7 +36,17 @@ type Props = {
   name: string
 }
 
+interface ModalState extends GaleriaItem {
+  estaVisivel: boolean
+}
+
 const Galeria = ({ defaultCover, name }: Props) => {
+  const [modal, setModal] = useState<ModalState>({
+    estaVisivel: false,
+    type: 'imagem',
+    url: ''
+  })
+
   const getMediaCover = (item: GaleriaItem) => {
     if (item.type === 'imagem') return item.url
     return defaultCover
@@ -46,12 +57,29 @@ const Galeria = ({ defaultCover, name }: Props) => {
     return play
   }
 
+  const closeModal = () => {
+    setModal({
+      estaVisivel: false,
+      type: 'imagem',
+      url: ''
+    })
+  }
+
   return (
     <>
       <Secao title="Galeria" background="black">
         <Items>
           {mock.map((media, index) => (
-            <Item key={media.url}>
+            <Item
+              key={media.url}
+              onClick={() => {
+                setModal({
+                  estaVisivel: true,
+                  type: media.type,
+                  url: media.url
+                })
+              }}
+            >
               <img
                 src={getMediaCover(media)}
                 alt={`Midia ${index + 1} de ${name}`}
@@ -66,15 +94,30 @@ const Galeria = ({ defaultCover, name }: Props) => {
           ))}
         </Items>
       </Secao>
-      <Modal>
+      <Modal className={modal.estaVisivel ? 'visivel' : ''}>
         <ModalContent className="container">
           <header>
             <h4>{name}</h4>
-            <img src={fechar} alt="Fechar" />
+            <img
+              src={fechar}
+              alt="Fechar"
+              onClick={() => {
+                closeModal()
+              }}
+            />
           </header>
-          <img src={bgHollow} />
+          {modal.type === 'imagem' ? (
+            <img src={modal.url} />
+          ) : (
+            <iframe frameBorder={0} src={modal.url} />
+          )}
         </ModalContent>
-        <div className="overlay"></div>
+        <div
+          onClick={() => {
+            closeModal()
+          }}
+          className="overlay"
+        ></div>
       </Modal>
     </>
   )
