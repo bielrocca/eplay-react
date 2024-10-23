@@ -4,6 +4,8 @@ import Secao from '../../Components/Secao'
 
 import Galeria from '../../Components/Galeria'
 
+import hollow from '../../Assets/Images/hollow_knight.png'
+
 const Produto = () => {
   const { id } = useParams()
 
@@ -36,7 +38,7 @@ const Produto = () => {
           jogo.
         </p>
       </Secao>
-      <Galeria />
+      <Galeria name="Jogo teste" defaultCover={hollow} />
     </>
   )
 }
