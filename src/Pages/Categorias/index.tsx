@@ -1,174 +1,58 @@
 import ListaDProdutos from '../../Components/ListaDProdutos'
-import Game from '../../models/Produto'
 
 import resident from '../../Assets/Images/resident.png'
 import diablo from '../../Assets/Images/diablo.png'
 import zelda from '../../Assets/Images/zelda.png'
 import starWars from '../../Assets/Images/star_wars.png'
+import { Game } from '../Home'
+import { useEffect, useState } from 'react'
 
-const RPG: Game[] = [
-  {
-    id: 1,
-    categoria: 'RPG',
-    descricao: 'Teste',
-    imagem: diablo,
-    infos: ['-50%', 'R$ 99,99'],
-    title: 'Diablo IV',
-    sistema: 'Windows'
-  },
-  {
-    id: 2,
-    categoria: 'RPG',
-    descricao: 'Teste',
-    imagem: diablo,
-    infos: ['-50%', 'R$ 99,99'],
-    title: 'Diablo IV',
-    sistema: 'Windows'
-  },
-  {
-    id: 3,
-    categoria: 'RPG',
-    descricao: 'Teste',
-    imagem: diablo,
-    infos: ['-50%', 'R$ 99,99'],
-    title: 'Diablo IV',
-    sistema: 'Windows'
-  },
-  {
-    id: 4,
-    categoria: 'RPG',
-    descricao: 'Teste',
-    imagem: diablo,
-    infos: ['-50%', 'R$ 99,99'],
-    title: 'Diablo IV',
-    sistema: 'Windows'
-  }
-]
+const Categorias = () => {
+  const [gamesAcao, setGamesAcao] = useState<Game[]>([])
+  const [gamesEsportes, setGamesEsportes] = useState<Game[]>([])
+  const [gamesSimulacao, setGamesSimulacao] = useState<Game[]>([])
+  const [gamesLuta, setGamesLuta] = useState<Game[]>([])
+  const [gamesRPG, setGamesRPG] = useState<Game[]>([])
 
-const Acao: Game[] = [
-  {
-    id: 5,
-    categoria: 'Ação',
-    descricao: 'Teste',
-    imagem: resident,
-    infos: ['-80%', 'R$ 29,99'],
-    title: 'Resident Evil 4 - Remake',
-    sistema: 'PS5'
-  },
-  {
-    id: 6,
-    categoria: 'Ação',
-    descricao: 'Teste',
-    imagem: resident,
-    infos: ['-80%', 'R$ 29,99'],
-    title: 'Resident Evil 4 - Remake',
-    sistema: 'PS5'
-  },
-  {
-    id: 7,
-    categoria: 'Ação',
-    descricao: 'Teste',
-    imagem: resident,
-    infos: ['-80%', 'R$ 29,99'],
-    title: 'Resident Evil 4 - Remake',
-    sistema: 'PS5'
-  },
-  {
-    id: 8,
-    categoria: 'Ação',
-    descricao: 'Teste',
-    imagem: resident,
-    infos: ['-80%', 'R$ 29,99'],
-    title: 'Resident Evil 4 - Remake',
-    sistema: 'PS5'
-  }
-]
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((resposta) => resposta.json())
+      .then((resposta) => setGamesAcao(resposta))
 
-const Aventura: Game[] = [
-  {
-    id: 9,
-    categoria: 'Aventura',
-    descricao: 'Teste',
-    imagem: zelda,
-    infos: ['-20%', 'R$49,99'],
-    title: 'Zelda',
-    sistema: 'Xbox'
-  },
-  {
-    id: 10,
-    categoria: 'Aventura',
-    descricao: 'Teste',
-    imagem: zelda,
-    infos: ['-20%', 'R$49,99'],
-    title: 'Zelda',
-    sistema: 'Xbox'
-  },
-  {
-    id: 11,
-    categoria: 'Aventura',
-    descricao: 'Teste',
-    imagem: zelda,
-    infos: ['-20%', 'R$49,99'],
-    title: 'Zelda',
-    sistema: 'Xbox'
-  },
-  {
-    id: 12,
-    categoria: 'Aventura',
-    descricao: 'Teste',
-    imagem: zelda,
-    infos: ['-20%', 'R$49,99'],
-    title: 'Zelda',
-    sistema: 'Xbox'
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((resposta) => resposta.json())
+      .then((resposta) => setGamesEsportes(resposta))
 
-const FPS: Game[] = [
-  {
-    id: 13,
-    categoria: 'FPS',
-    descricao: 'Teste',
-    imagem: starWars,
-    infos: ['Em breve'],
-    title: 'Star Wars',
-    sistema: 'Windows'
-  },
-  {
-    id: 14,
-    categoria: 'FPS',
-    descricao: 'Teste',
-    imagem: starWars,
-    infos: ['Em breve'],
-    title: 'Star Wars',
-    sistema: 'Windows'
-  },
-  {
-    id: 15,
-    categoria: 'FPS',
-    descricao: 'Teste',
-    imagem: starWars,
-    infos: ['Em breve'],
-    title: 'Star Wars',
-    sistema: 'Windows'
-  },
-  {
-    id: 16,
-    categoria: 'FPS',
-    descricao: 'Teste',
-    imagem: starWars,
-    infos: ['Em breve'],
-    title: 'Star Wars',
-    sistema: 'Windows'
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((resposta) => resposta.json())
+      .then((resposta) => setGamesSimulacao(resposta))
 
-const Categorias = () => (
-  <>
-    <ListaDProdutos title="RPG" background="grey" games={RPG} />
-    <ListaDProdutos title="Ação" background="black" games={Acao} />
-    <ListaDProdutos title="Aventura" background="grey" games={Aventura} />
-    <ListaDProdutos title="FPS" background="black" games={FPS} />
-  </>
-)
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((resposta) => resposta.json())
+      .then((resposta) => setGamesLuta(resposta))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
+      .then((resposta) => resposta.json())
+      .then((resposta) => setGamesRPG(resposta))
+  }, [])
+
+  return (
+    <>
+      <ListaDProdutos title="RPG" background="black" games={gamesRPG} />
+      <ListaDProdutos title="Ação" background="grey" games={gamesAcao} />
+      <ListaDProdutos
+        title="Esportes"
+        background="black"
+        games={gamesEsportes}
+      />
+      <ListaDProdutos title="Luta" background="grey" games={gamesLuta} />
+      <ListaDProdutos
+        title="Simulação"
+        background="black"
+        games={gamesSimulacao}
+      />
+    </>
+  )
+}
 
 export default Categorias

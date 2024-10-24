@@ -1,4 +1,7 @@
+import { useState } from 'react'
+
 import Secao from '../Secao'
+import { GaleriaItem } from '../../Pages/Home'
 
 import { Items, Item, Action, Modal, ModalContent } from './styles'
 
@@ -9,12 +12,6 @@ import bgHollow from '../../Assets/Images/banner-hollow.jpg'
 import play from '../../Assets/Images/play.png'
 import zoom from '../../Assets/Images/zoom.png'
 import fechar from '../../Assets/Images/fechar.png'
-import { useState } from 'react'
-
-interface GaleriaItem {
-  type: 'imagem' | 'video'
-  url: string
-}
 
 const mock: GaleriaItem[] = [
   {
