@@ -3,11 +3,6 @@ import { useEffect, useState } from 'react'
 import Banner from '../../Components/Banner'
 import ListaDProdutos from '../../Components/ListaDProdutos'
 
-import resident from '../../Assets/Images/resident.png'
-import diablo from '../../Assets/Images/diablo.png'
-import zelda from '../../Assets/Images/zelda.png'
-import starWars from '../../Assets/Images/star_wars.png'
-
 export interface GaleriaItem {
   type: 'imagem' | 'video'
   url: string

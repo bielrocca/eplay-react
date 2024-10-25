@@ -1,28 +1,41 @@
-import bannerImg from '../../Assets/Images/banner-hollow.jpg'
+import { Game } from '../../Pages/Home'
 import Button from '../Button'
 import Tag from '../Tag'
 import { Banner, Infos } from './styles'
+import { formataPreco } from '../ListaDProdutos'
 
-const Hero = () => (
-  <Banner style={{ backgroundImage: `url(${bannerImg})` }}>
+type Props = {
+  game: Game
+}
+
+const Hero = ({ game }: Props) => (
+  <Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
     <div className="container">
       <div>
-        <Tag>RPG</Tag>
-        <Tag>PS5</Tag>
+        <Tag>{game.details.category}</Tag>
+        <Tag>{game.details.system}</Tag>
       </div>
       <Infos>
-        <h2>Hollow Knight</h2>
+        <h2>{game.name}</h2>
         <p>
-          De <span>R$ 89,00</span> <br />
-          Port R$ 49,00
+          {game.prices.discount && (
+            <span>De {formataPreco(game.prices.old)}</span>
+          )}
+          {game.prices.current && (
+            <>
+              <br /> Por {formataPreco(game.prices.current)} <br />
+            </>
+          )}
         </p>
-        <Button
-          variant="primario"
-          type="button"
-          title="Adicionar jogo ao carrinho"
-        >
-          Adicionar ao carrinho
-        </Button>
+        {game.prices.current && (
+          <Button
+            variant="primario"
+            type="button"
+            title="Adicionar jogo ao carrinho"
+          >
+            Adicionar ao carrinho
+          </Button>
+        )}
       </Infos>
     </div>
   </Banner>
