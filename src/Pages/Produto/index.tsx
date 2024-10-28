@@ -7,18 +7,12 @@ import Galeria from '../../Components/Galeria'
 import hollow from '../../Assets/Images/hollow_knight.png'
 import { useEffect, useState } from 'react'
 import { Game } from '../Home'
+import { useGetGameQuery } from '../../Services/API'
 
 const Produto = () => {
   const { id } = useParams()
 
-  const [game, setGame] = useState<Game>()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/${id}`)
-      .then((resposta) => resposta.json())
-      .then((resposta) => setGame(resposta))
-      .catch((error) => console.error('Erro ao carregar dados do jogo:', error))
-  }, [id])
+  const { data: game } = useGetGameQuery(id!)
 
   if (!game) {
     return <p>Carregando dados do jogo...</p>
