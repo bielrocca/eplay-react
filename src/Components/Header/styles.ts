@@ -32,10 +32,11 @@ export const LinkItem = styled.li`
   cursor: pointer;
 `
 
-export const LinkCart = styled.a`
+export const CartButton = styled.a`
   display: flex;
 
   img {
     margin-left: 16px;
+    cursor: pointer;
   }
 `
