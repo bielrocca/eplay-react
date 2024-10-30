@@ -3,8 +3,6 @@ import { RootReducer } from '../../Store'
 
 import Button from '../Button'
 
-import hollowNight from '../../Assets/Images/banner-hollow.jpg'
-
 import {
   CartContainer,
   Overlay,
@@ -16,10 +14,11 @@ import {
 
 import Tag from '../Tag'
 
-import { close } from '../../Store/Reducers/cart'
+import { close, removeToCart } from '../../Store/Reducers/cart'
+import { formataPreco } from '../ListaDProdutos'
 
 const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -27,35 +26,38 @@ const Cart = () => {
     dispatch(close())
   }
 
+  const removeItem = (id: number) => {
+    dispatch(removeToCart(id))
+  }
+
+  const getTotalPrice = () => {
+    return items.reduce((acumulador, valorAtual) => {
+      return acumulador + valorAtual.prices.current!
+    }, 0)
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
         <ul>
-          <CartItem>
-            <img src={hollowNight} />
-            <div>
-              <h3>Nome do jogo</h3>
-              <Tag>RPG</Tag>
-              <Tag>Windows</Tag>
-              <span>R$ 79,00</span>
-            </div>
-            <button type="button" />
-          </CartItem>
-          <CartItem>
-            <img src={hollowNight} />
-            <div>
-              <h3>Nome do jogo</h3>
-              <Tag>RPG</Tag>
-              <Tag>Windows</Tag>
-              <span>R$ 79,00</span>
-            </div>
-            <button type="button" />
-          </CartItem>
+          {items.map((item) => (
+            <CartItem key={item.id}>
+              <img src={item.media.thumbnail} alt={item.name} />
+              <div>
+                <h3>{item.name}</h3>
+                <Tag>{item.details.category}</Tag>
+                <Tag>{item.details.system}</Tag>
+                <span>{formataPreco(item.prices.current)}</span>
+              </div>
+              <button onClick={() => removeItem(item.id)} type="button" />
+            </CartItem>
+          ))}
         </ul>
-        <Quantidade>2 jogo(s) no carrinho</Quantidade>
+        <Quantidade>{items.length} jogo(s) no carrinho</Quantidade>
         <Prices>
-          Total de R$ 158,00 <span>Em até 6x sem juros</span>
+          Total de {formataPreco(getTotalPrice())}{' '}
+          <span>Em até 6x sem juros</span>
         </Prices>
         <Button title="Clique para continuar com a comprar" type="button">
           Continuar com a comprar
