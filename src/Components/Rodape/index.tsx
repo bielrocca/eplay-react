@@ -15,16 +15,19 @@ const Rodape = () => (
         <TituloSecao>Categorias</TituloSecao>
         <Links>
           <li>
-            <Link>RPG</Link>
+            <Link to="/categorias#rpg">RPG</Link>
           </li>
           <li>
-            <Link>AÇÃO</Link>
+            <Link to="/categorias#action">Ação</Link>
           </li>
           <li>
-            <Link>AVENTURA</Link>
+            <Link to="/categorias#esporte">Esporte</Link>
           </li>
           <li>
-            <Link>FPS</Link>
+            <Link to="/categorias#luta">Luta</Link>
+          </li>
+          <li>
+            <Link to="/categorias#simulacao">Simulação</Link>
           </li>
         </Links>
       </SecaoRodape>
@@ -32,13 +35,10 @@ const Rodape = () => (
         <TituloSecao>Acesso rápido</TituloSecao>
         <Links>
           <li>
-            <Link>Categorias</Link>
+            <Link to="/#em-breve">Em Breve</Link>
           </li>
           <li>
-            <Link>Novidades</Link>
-          </li>
-          <li>
-            <Link>Promoções</Link>
+            <Link to="/#promocao">Promoções</Link>
           </li>
         </Links>
       </SecaoRodape>
