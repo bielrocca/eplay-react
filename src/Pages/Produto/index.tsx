@@ -4,9 +4,6 @@ import Secao from '../../Components/Secao'
 
 import Galeria from '../../Components/Galeria'
 
-import hollow from '../../Assets/Images/hollow_knight.png'
-import { useEffect, useState } from 'react'
-import { Game } from '../Home'
 import { useGetGameQuery } from '../../Services/API'
 
 const Produto = () => {
