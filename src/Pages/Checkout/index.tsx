@@ -7,9 +7,11 @@ import cartao from '../../Assets/Images/cartao.png'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../Services/API'
 
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
+  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -75,7 +77,39 @@ const Checkout = () => {
     }),
     onSubmit: (values) => {
       // Enviar os dados para o backend
-      console.log(values)
+      purchase({
+        billing: {
+          name: values.nomeCompleto,
+          email: values.email,
+          document: values.cpf
+        },
+        delivery: {
+          email: values.deliveryEmail
+        },
+        payment: {
+          installments: 1,
+          card: {
+            active: payWithCard,
+            code: Number(values.cardCode),
+            name: values.cardOwner,
+            number: values.cardNumber,
+            owner: {
+              document: values.cpfCardOwner,
+              name: values.cardDisplayName
+            },
+            expires: {
+              month: 1,
+              year: 2025
+            }
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 100
+          }
+        ]
+      })
     }
   })
 
