@@ -30,7 +30,10 @@ const Produto = ({
   }
 
   return (
-    <Card to={`/produto/${id}`}>
+    <Card
+      title={`Clique aqui para ver mais detalhes do jogo: ${title}`}
+      to={`/produto/${id}`}
+    >
       <img src={imagem} alt={title} />
       <Infos>
         {infos.map((info) => (

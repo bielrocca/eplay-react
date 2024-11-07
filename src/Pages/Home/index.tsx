@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import Banner from '../../Components/Banner'
 import ListaDProdutos from '../../Components/ListaDProdutos'
 

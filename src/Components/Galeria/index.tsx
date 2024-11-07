@@ -5,28 +5,9 @@ import { GaleriaItem } from '../../Pages/Home'
 
 import { Items, Item, Action, Modal, ModalContent } from './styles'
 
-import zelda from '../../Assets/Images/zelda.png'
-import resident from '../../Assets/Images/resident.png'
-import bgHollow from '../../Assets/Images/banner-hollow.jpg'
-
 import play from '../../Assets/Images/play.png'
 import zoom from '../../Assets/Images/zoom.png'
 import fechar from '../../Assets/Images/fechar.png'
-
-const mock: GaleriaItem[] = [
-  {
-    type: 'imagem',
-    url: zelda
-  },
-  {
-    type: 'imagem',
-    url: resident
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/Buqf-ju_rdM?si=Tl4gUFJo5yMAqX2X'
-  }
-]
 
 type Props = {
   defaultCover: string

@@ -15,19 +15,44 @@ const Rodape = () => (
         <TituloSecao>Categorias</TituloSecao>
         <Links>
           <li>
-            <Link to="/categorias#rpg">RPG</Link>
+            <Link
+              title="Clique aqui para acessar jogos de RPG"
+              to="/categorias#rpg"
+            >
+              RPG
+            </Link>
           </li>
           <li>
-            <Link to="/categorias#action">Ação</Link>
+            <Link
+              title="Clique aqui para acessar jogos de Ação"
+              to="/categorias#action"
+            >
+              Ação
+            </Link>
           </li>
           <li>
-            <Link to="/categorias#esporte">Esporte</Link>
+            <Link
+              title="Clique aqui para acessar jogos de Esportes"
+              to="/categorias#esporte"
+            >
+              Esporte
+            </Link>
           </li>
           <li>
-            <Link to="/categorias#luta">Luta</Link>
+            <Link
+              title="Clique aqui para acessar jogos de Luta"
+              to="/categorias#luta"
+            >
+              Luta
+            </Link>
           </li>
           <li>
-            <Link to="/categorias#simulacao">Simulação</Link>
+            <Link
+              title="Clique aqui para acessar jogos de Simulação"
+              to="/categorias#simulacao"
+            >
+              Simulação
+            </Link>
           </li>
         </Links>
       </SecaoRodape>
@@ -35,10 +60,20 @@ const Rodape = () => (
         <TituloSecao>Acesso rápido</TituloSecao>
         <Links>
           <li>
-            <Link to="/#em-breve">Em Breve</Link>
+            <Link
+              title="Clique aqui para acessar a seção em breve"
+              to="/#em-breve"
+            >
+              Em Breve
+            </Link>
           </li>
           <li>
-            <Link to="/#promocao">Promoções</Link>
+            <Link
+              title="Clique aqui para acessar a seção de promoção"
+              to="/#promocao"
+            >
+              Promoções
+            </Link>
           </li>
         </Links>
       </SecaoRodape>

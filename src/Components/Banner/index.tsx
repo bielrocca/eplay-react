@@ -6,7 +6,7 @@ import Tag from '../Tag'
 import Button from '../Button'
 
 const Banner = () => {
-  const { data: game, isLoading } = useGetDestaqueQuery()
+  const { data: game } = useGetDestaqueQuery()
 
   if (!game) {
     return <h3>Carregando...</h3>
