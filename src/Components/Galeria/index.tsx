@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Secao from '../Secao'
 import { GaleriaItem } from '../../Pages/Home'
 
-import { Items, Item, Action, Modal, ModalContent } from './styles'
+import * as S from './styles'
 
 import play from '../../Assets/Images/play.png'
 import zoom from '../../Assets/Images/zoom.png'
@@ -47,9 +47,9 @@ const Galeria = ({ defaultCover, name, items }: Props) => {
   return (
     <>
       <Secao title="Galeria" background="black">
-        <Items>
+        <S.Items>
           {items.map((media, index) => (
-            <Item
+            <S.Item
               key={media.url}
               onClick={() => {
                 setModal({
@@ -63,18 +63,18 @@ const Galeria = ({ defaultCover, name, items }: Props) => {
                 src={getMediaCover(media)}
                 alt={`Midia ${index + 1} de ${name}`}
               />
-              <Action>
+              <S.Action>
                 <img
                   src={getMediaIcon(media)}
                   alt="Clique para maximizar a midia"
                 />
-              </Action>
-            </Item>
+              </S.Action>
+            </S.Item>
           ))}
-        </Items>
+        </S.Items>
       </Secao>
-      <Modal className={modal.estaVisivel ? 'visivel' : ''}>
-        <ModalContent className="container">
+      <S.Modal className={modal.estaVisivel ? 'visivel' : ''}>
+        <S.ModalContent className="container">
           <header>
             <h4>{name}</h4>
             <img src={fechar} alt="Fechar" onClick={closeModal} />
@@ -84,14 +84,14 @@ const Galeria = ({ defaultCover, name, items }: Props) => {
           ) : (
             <iframe frameBorder={0} src={modal.url} />
           )}
-        </ModalContent>
+        </S.ModalContent>
         <div
           onClick={() => {
             closeModal()
           }}
           className="overlay"
         ></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

@@ -1,6 +1,5 @@
 import Banner from '../../Components/Banner'
 import ListaDProdutos from '../../Components/ListaDProdutos'
-
 import { useGetEmBreveQuery, useGetPromocoesQuery } from '../../Services/API'
 
 export interface GaleriaItem {
@@ -33,33 +32,28 @@ export type Game = {
 }
 
 const Home = () => {
-  const { data: EmBreve } = useGetEmBreveQuery()
-  const { data: Promocoes } = useGetPromocoesQuery()
-
-  if (EmBreve && Promocoes) {
-    return (
-      <>
-        <Banner />
-        <ListaDProdutos
-          title="Promoções"
-          background="grey"
-          games={Promocoes}
-          id="promocao"
-        />
-        <ListaDProdutos
-          title="Em Breve"
-          background="black"
-          games={EmBreve}
-          id="em-breve"
-        />
-      </>
-    )
-  }
+  const { data: EmBreve, isLoading: isLoadingEmBreve } = useGetEmBreveQuery()
+  const { data: Promocoes, isLoading: isLoadingPromocoes } =
+    useGetPromocoesQuery()
 
   return (
-    <div>
-      <p>Carregando...</p>
-    </div>
+    <>
+      <Banner />
+      <ListaDProdutos
+        title="Promoções"
+        background="grey"
+        games={Promocoes}
+        id="promocao"
+        isLoading={isLoadingPromocoes}
+      />
+      <ListaDProdutos
+        title="Em Breve"
+        background="black"
+        games={EmBreve}
+        id="em-breve"
+        isLoading={isLoadingEmBreve}
+      />
+    </>
   )
 }
 

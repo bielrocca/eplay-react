@@ -5,14 +5,18 @@ import Secao from '../../Components/Secao'
 import Galeria from '../../Components/Galeria'
 
 import { useGetGameQuery } from '../../Services/API'
+import Loader from '../../Components/Loader'
+
+type GameParams = {
+  id: string
+}
 
 const Produto = () => {
-  const { id } = useParams()
-
-  const { data: game } = useGetGameQuery(id!)
+  const { id } = useParams() as GameParams
+  const { data: game } = useGetGameQuery(id)
 
   if (!game) {
-    return <p>Carregando dados do jogo...</p>
+    return <Loader />
   }
 
   return (

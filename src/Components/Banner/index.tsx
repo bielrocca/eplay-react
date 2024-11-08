@@ -4,12 +4,13 @@ import { useGetDestaqueQuery } from '../../Services/API'
 import Tag from '../Tag'
 import Button from '../Button'
 import { formataPreco } from '../../Utils'
+import Loader from '../Loader'
 
 const Banner = () => {
   const { data: game } = useGetDestaqueQuery()
 
   if (!game) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (
