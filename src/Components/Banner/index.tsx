@@ -1,9 +1,9 @@
 import { Imagem, Precos, Titulo } from './styles'
-import { formataPreco } from '../ListaDProdutos'
 import { useGetDestaqueQuery } from '../../Services/API'
 
 import Tag from '../Tag'
 import Button from '../Button'
+import { formataPreco } from '../../Utils'
 
 const Banner = () => {
   const { data: game } = useGetDestaqueQuery()

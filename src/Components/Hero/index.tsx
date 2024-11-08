@@ -2,9 +2,9 @@ import { Game } from '../../Pages/Home'
 import Button from '../Button'
 import Tag from '../Tag'
 import { Banner, Infos } from './styles'
-import { formataPreco } from '../ListaDProdutos'
 import { useDispatch } from 'react-redux'
 import { addToCart, open } from '../../Store/Reducers/cart'
+import { formataPreco } from '../../Utils'
 
 type Props = {
   game: Game

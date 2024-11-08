@@ -15,7 +15,7 @@ import {
 import Tag from '../Tag'
 
 import { close, removeToCart } from '../../Store/Reducers/cart'
-import { formataPreco } from '../ListaDProdutos'
+import { formataPreco } from '../../Utils'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)

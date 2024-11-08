@@ -77,13 +77,7 @@ const Galeria = ({ defaultCover, name, items }: Props) => {
         <ModalContent className="container">
           <header>
             <h4>{name}</h4>
-            <img
-              src={fechar}
-              alt="Fechar"
-              onClick={() => {
-                closeModal()
-              }}
-            />
+            <img src={fechar} alt="Fechar" onClick={closeModal} />
           </header>
           {modal.type === 'imagem' ? (
             <img src={modal.url} />
