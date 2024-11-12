@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import Secao from '../Secao'
-import { GaleriaItem } from '../../Pages/Home'
 
 import * as S from './styles'
 

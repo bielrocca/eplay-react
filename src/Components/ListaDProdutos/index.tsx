@@ -1,4 +1,3 @@
-import { Game } from '../../Pages/Home'
 import { formataPreco } from '../../Utils'
 import Loader from '../Loader'
 import Produto from '../Produto'
